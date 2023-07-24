@@ -8,11 +8,11 @@ $IP_in_Binary = -join ($IP.split(".") | foreach-object {[system.convert]::tostri
 
 $IP_in_Binary = [string]$IP_in_Binary
 
-write-host $IP_in_Binary
+Write-Host $IP_in_Binary
 
 $Binary_Length = $IP_in_Binary.length
 
-#Write-Host "Your answer needs to be $Binary_Length digits long." -ForeGroundColor "Cyan"
+Write-Host "Your answer needs to be $Binary_Length digits long." -ForeGroundColor "Cyan"
 
 Write-Host "Your ip address is $IP. Please calculate it in binary." -ForeGroundColor "Green"
 
@@ -26,7 +26,7 @@ Write-Host "Write the first octet ($First_Octet) in binary." -ForeGroundColor "C
 
 $Answer_First_Octet = Read-Host "Please type your answer"
 
-$IP_in_Binary_First_Octet = $IP_in_Binary.substring(0,7)
+$IP_in_Binary_First_Octet = $IP_in_Binary.substring(0,8)#10101100
 
 if($Answer_First_Octet -eq $IP_in_Binary_First_Octet){
 
@@ -36,9 +36,9 @@ Write-Host "Correct!!!" -ForegroundColor "Green"
 
 else{
                                                                 #172.17.2.16
-Write-Host "Incorrect, the answer is $IP_in_Binary_First_Octet" #10101100010001000000100010000
-                                                                #10101100
-                                                                        #010001
+Write-Host "Incorrect, the answer is $IP_in_Binary_First_Octet" #10101100000100010000001000010000
+                                                                #10101100       #00000010
+                                                                        #00010001
 
 }
 
@@ -50,7 +50,7 @@ Write-Host "Write the second octet ($Second_Octet) in binary." -ForeGroundColor 
 
 $Answer_Second_Octet = Read-Host "Please type your answer"
 
-$IP_in_Binary_Second_Octet = $IP_in_Binary.substring(8,15)
+$IP_in_Binary_Second_Octet = $IP_in_Binary.substring(8,8) #01000100
 
 if($Answer_Second_Octet -eq $IP_in_Binary_Second_Octet){
 
@@ -60,6 +60,28 @@ Write-Host "Correct!!!" -ForegroundColor "Green"
 
 else{
 
-Write-Host "Incorrect, the answer is $IP_in_Binary_Second_Octet" #10101100010001000000100010000
+Write-Host "Incorrect, the answer is $IP_in_Binary_Second_Octet" -ForegroundColor "Red" #10101100010001000000100010000
+
+}
+
+# THIRD OCTET PROBLEM #
+
+$Third_Octet = $IP.Substring(5,1)
+
+Write-Host "Write the third octet ($Third_Octet) in binary." -ForeGroundColor "Cyan"
+
+$Answer_Third_Octet = Read-Host "Please type your answer"
+
+$IP_in_Binary_Third_Octet = $IP_in_Binary.substring(16,8) #00000010
+
+if($Answer_Third_Octet -eq $IP_in_Binary_Third_Octet){
+
+Write-Host "Correct!!!" -ForegroundColor "Green"
+
+}
+
+else{
+
+Write-Host "Incorrect, the answer is $IP_in_Binary_Third_Octet" -ForegroundColor "Red" #10101100010001000000100010000
 
 }
