@@ -8,21 +8,27 @@ $IP_in_Binary = -join ($IP.split(".") | foreach-object {[system.convert]::tostri
 
 $IP_in_Binary = [string]$IP_in_Binary
 
-Write-Host $IP_in_Binary
-
 $Binary_Length = $IP_in_Binary.length
+
+$Octets = $IP.Split(".")
+
+$1st_octet = $Octets[0] = [string]([int]$Octets[0])
+
+$2nd_octet = $Octets[1] = [string]([int]$Octets[1])
+
+$3rd_octet = $Octets[2] = [string]([int]$Octets[2])
+
+$4th_octet = $Octets[3] = [string]([int]$Octets[3]) 
 
 Write-Host "Your answer needs to be $Binary_Length digits long." -ForeGroundColor "Cyan"
 
-Write-Host "Your ip address is $IP. Please calculate it in binary." -ForeGroundColor "Green"
+Write-Host "Your ip address is $IP `nPlease calculate it in binary." -ForeGroundColor "Green"
 
 Write-Host "Here is the binary conversion chart: `n128, 64, 32, 16, 8, 4, 2, 1" -ForegroundColor "Yellow"
 
-# FIRST OCTET PROBLEM #
+# FIRST OCTET PROBLEM #d
 
-$First_Octet = $IP.Substring(0,3)
-
-Write-Host "Write the first octet ($First_Octet) in binary." -ForeGroundColor "Cyan"
+Write-Host "Write the first octet ($1st_octet) in binary." -ForeGroundColor "Cyan"
 
 $Answer_First_Octet = Read-Host "Please type your answer"
 
@@ -43,9 +49,7 @@ Write-Host "Incorrect, the answer is $IP_in_Binary_First_Octet" -ForegroundColor
 
 # SECOND OCTET PROBLEM #
 
-$Second_Octet = $IP.Substring(4,2)
-
-Write-Host "Write the second octet ($Second_Octet) in binary." -ForeGroundColor "Cyan"
+Write-Host "Write the second octet ($2nd_octet) in binary." -ForeGroundColor "Cyan"
 
 $Answer_Second_Octet = Read-Host "Please type your answer"
 
@@ -65,9 +69,7 @@ Write-Host "Incorrect, the answer is $IP_in_Binary_Second_Octet" -ForegroundColo
 
 # THIRD OCTET PROBLEM #
 
-$Third_Octet = $IP.Substring(5,1)
-
-Write-Host "Write the third octet ($Third_Octet) in binary." -ForeGroundColor "Cyan"
+Write-Host "Write the third octet ($3rd_octet) in binary." -ForeGroundColor "Cyan"
 
 $Answer_Third_Octet = Read-Host "Please type your answer"
 
@@ -87,9 +89,7 @@ Write-Host "Incorrect, the answer is $IP_in_Binary_Third_Octet" -ForegroundColor
 
 # Fourth OCTET PROBLEM #
 
-$Fourth_Octet = $IP.Substring($IP.Length - 2)
-
-Write-Host "Write the fourth octet ($Fourth_Octet) in binary." -ForeGroundColor "Cyan"
+Write-Host "Write the fourth octet ($4th_octet) in binary." -ForeGroundColor "Cyan"
 
 $Answer_Fourth_Octet = Read-Host "Please type your answer"
 
@@ -106,4 +106,3 @@ else{
 Write-Host "Incorrect, the answer is $IP_in_Binary_Fourth_Octet" -ForegroundColor "Red"
 
 }
-
