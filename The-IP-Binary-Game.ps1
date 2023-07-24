@@ -1,6 +1,6 @@
 $Date = Get-Date -Format "MM-dd-yyyy"
 
-Write-Host "Welcome to Nerdle. You will receive a few networking questions for today, $Date." -ForegroundColor DarkGray
+Write-Host "Welcome to The IP Binary Game. You will receive a few networking questions for today, $Date." -ForegroundColor DarkGray
 
 $IP = Get-NetIpAddress | Where { $_.InterfaceAlias -EQ "Wi-Fi" -and $_.AddressFamily -EQ "IPv4" } | Select -expand IPAddress
 
