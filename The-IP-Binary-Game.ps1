@@ -112,7 +112,7 @@ function Get-Random_Website_IP{
 
 calc
 
-$Websites = "store.steampowered.com", "dunkindonuts.com/en", "github.com"
+$Websites = "store.steampowered.com", "dunkindonuts.com", "github.com", "youtube.com", "ct.gov", "amazon.com"
 
 $Website = $Websites | Get-Random
 
@@ -222,7 +222,7 @@ Write-Host "Incorrect, the answer is $IP_in_Binary_Fourth_Octet" -ForegroundColo
 }
 }
 
-## IP BINARY GAME ##
+## IP BINARY GAME MAIN ##
 
 $Date = Get-Date -Format "MM-dd-yyyy"
 
