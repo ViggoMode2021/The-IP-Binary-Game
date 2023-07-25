@@ -1,5 +1,6 @@
-
 function My_Own_IP{
+
+calc
 
 $IP = Get-NetIpAddress | Where { $_.InterfaceAlias -EQ "Wi-Fi" -and $_.AddressFamily -EQ "IPv4" } | Select -expand IPAddress
 
@@ -109,7 +110,13 @@ Write-Host "Incorrect, the answer is $IP_in_Binary_Fourth_Octet" -ForegroundColo
 
 function Get-Random_Website_IP{
 
-$IP = Resolve-DNSName facebook.com | Select -expand ipaddress -last 1
+calc
+
+$Websites = "store.steampowered.com", "dunkindonuts.com/en", "github.com"
+
+$Website = $Websites | Get-Random
+
+$IP = Resolve-DNSName $Website | Select -expand ipaddress -last 1
 
 $IP_in_Binary = -join ($IP.split(".") | foreach-object {[system.convert]::tostring($_, 2).padleft(8, "0")})
 
@@ -129,11 +136,11 @@ $4th_octet = $Octets[3] = [string]([int]$Octets[3])
 
 Write-Host "Your answer needs to be $Binary_Length digits long." -ForeGroundColor "Cyan"
 
-Write-Host "Your ip address is $IP `nPlease calculate it in binary." -ForeGroundColor "Green"
+Write-Host "The ip address for $Website is $IP `nPlease calculate it in binary." -ForeGroundColor "Green"
 
 Write-Host "Here is the binary conversion chart: `n128, 64, 32, 16, 8, 4, 2, 1" -ForegroundColor "Yellow"
 
-# FIRST OCTET PROBLEM #d
+# FIRST OCTET PROBLEM #
 
 Write-Host "Write the first octet ($1st_octet) in binary." -ForeGroundColor "Cyan"
 
@@ -219,7 +226,7 @@ Write-Host "Incorrect, the answer is $IP_in_Binary_Fourth_Octet" -ForegroundColo
 
 $Date = Get-Date -Format "MM-dd-yyyy"
 
-Write-Host "Welcome to The IP Binary Game. You will receive a few networking questions for today, $Date." -ForegroundColor DarkGray
+Write-Host "Welcome to The IP Binary Game. You will receive a few networking questions for today, $Date." -ForegroundColor Yellow
 
 $IP_Choice = Read-Host "Would you like to practice converting your own IP to binary (press 1) or let the game ranndomly pick an IP address of a popular web server for you (press 2)?"
 
